@@ -29,4 +29,12 @@ class HTMLParser:
         raw_content = soup.find_all(element)
 
         return [content.get_text() for content in raw_content]
-    
+
+    @staticmethod   
+    def output_to_file(content, filepath):
+        with open(filepath, 'w') as filename:
+            if isinstance(content, list):
+                for content_item in content:
+                    filename.write(f'{content_item}\n')
+            else:
+                filename.write(str(content))
