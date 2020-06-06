@@ -9,6 +9,6 @@ if __name__ == "__main__":
     html_parser = HTMLParser('https://www.foxnews.com/')
     html_parser = HTMLParser('https://www.nbcnews.com/')
     html_text = html_parser.get_html_text()
-    html_parser.output_to_file(html_text, 'html_text.txt')
+    html_parser.output_to_file(html_text, 'output/html_text.txt')
     titles_list = html_parser.get_element_text('a')
-    html_parser.output_to_file(titles_list, 'output.txt')
+    html_parser.output_to_file(titles_list, 'output/output.txt')

@@ -19,11 +19,18 @@ class HTMLParser:
         return coverpage
 
     def get_html_text(self):
+        """
+        Returns html of webpage at url
+        """
         page_content = self.get_html_content()
         soup = BeautifulSoup(page_content, 'html.parser')
         return soup.prettify()
 
     def get_element_text(self, element):
+        """
+        Returns text for each instance of a given element
+        in the HTML
+        """
         page_content = self.get_html_content()
         soup = BeautifulSoup(page_content, 'html.parser')
         raw_content = soup.find_all(element)
@@ -32,6 +39,9 @@ class HTMLParser:
 
     @staticmethod   
     def output_to_file(content, filepath):
+        """
+        Writes given content to file at a given filepath
+        """
         with open(filepath, 'w') as filename:
             if isinstance(content, list):
                 for content_item in content:
