@@ -31,7 +31,10 @@ class HTMLParser:
         return [content.get_text() for content in raw_content]
 
 if __name__ == "__main__":
-    html_parser = HTMLParser('https://www.foxnews.com/')
-    html_parser = HTMLParser('https://www.nbcnews.com/')
-    titles_list = html_parser.get_element_text('a')
-    print(titles_list)
+    #html_parser = HTMLParser('https://www.foxnews.com/')
+    #html_parser = HTMLParser('https://www.nbcnews.com/')
+    #html_parser = HTMLParser('https://abcnews.go.com/')
+    html_parser = HTMLParser('https://www.cnn.com/')
+    
+    #titles_list = html_parser.get_element_text('h4')
+    #print(titles_list)
