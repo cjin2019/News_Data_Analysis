@@ -6,3 +6,11 @@ Analyze news content from different media
 1. install npm, node
 2. cd repository
 3. npm install cheerio axios
+
+## Python scrape
+
+### How to Install
+1. python -m venv venv 
+2. venv/Scripts/activate
+3. cd python_scrape
+4. pip install -r requirements.txt
