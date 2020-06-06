@@ -8,5 +8,5 @@ axios.get('https://www.foxnews.com/').then((response) =>{
 	$('img').each(function (i, e){
 		altElems[i] = $(this).attr('alt');
 	})
-	fs.writeFile('output.txt', altElems);
+	fs.writeFile('output.txt', altElems, (error) => { });
 })
