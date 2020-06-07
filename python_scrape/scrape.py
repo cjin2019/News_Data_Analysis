@@ -22,5 +22,5 @@ if __name__ == "__main__":
         html_parser = HTMLParser(url)
         html_text = html_parser.get_html_text()
         html_parser.output_to_file(html_text, f'output/{news_outlet}/html_text.html')
-        titles_list = html_parser.get_element_text('a')
+        titles_list = html_parser.get_tag_text('a')
         html_parser.output_to_file(titles_list, f'output/{news_outlet}/output.txt')

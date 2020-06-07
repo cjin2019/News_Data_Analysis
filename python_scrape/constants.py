@@ -11,8 +11,8 @@ headline_markers = {
 	'nbc': [],
 	'cnn': [],
 	'abc': {
-        'element': 'a',
-        
+        'tag': 'a',
+
     },
 	'reuters': []
 }
