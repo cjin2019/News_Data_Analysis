@@ -14,5 +14,5 @@ headline_markers = {
         'element': 'a',
         
     },
-	'reuters': []
+	'reuters': {'class:', ['story_title', 'article_heading']}
 }
