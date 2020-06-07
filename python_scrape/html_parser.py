@@ -79,7 +79,7 @@ class HTMLParser:
         Assumes css_val(s) format (eg. class .class_name)
         css_val can be a string or a list of css vals
         """
-        query = css_vals if type(css_vals) == str else ",".join(css_val)
+        query = css_vals if type(css_vals)==str else ",".join(css_vals)
         return self.soup.select(query)
     def get_css_items_text(self, css_vals):
         """

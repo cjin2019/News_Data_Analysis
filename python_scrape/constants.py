@@ -11,5 +11,5 @@ headline_markers = {
 	'nbc': [],
 	'cnn': [],
 	'abc': [],
-	'reuters': {'class': ['story_title', 'article_heading']}
+	'reuters': {'class': ['story-title', 'article-heading']}
 }
