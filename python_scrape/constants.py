@@ -6,10 +6,20 @@ NEWS_URLS = {
     'reuters': 'https://www.reuters.com/'
 }
 
-headline_markers = {
+HEADLINE_MARKERS = {
 	'fox': [],
 	'nbc': [],
 	'cnn': [],
-	'abc': [],
+	'abc': {
+        'extract': {},
+        'decompose': [
+            'nav',
+            'article._footer',
+            'a.video-modal',
+            'span.duration',
+            'div.container',
+            'div.live-callout'
+        ]
+    },
 	'reuters': {'class': ['story_title', 'article_heading']}
 }

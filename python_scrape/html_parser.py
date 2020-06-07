@@ -33,13 +33,14 @@ class HTMLParser:
         Returns html of webpage at url
         """
         return self.soup.prettify()
-    
+
     def get_first_tag_item(self, tag, **css_items):
         """
         Returns the first instance of a given tag
         in the HTML
+        attrs={"class": "sister"}
         """
-        self.soup.find(tag, **css_items)
+        return self.soup.find(tag, **css_items)
 
     def get_all_tag_items(self, tag, **css_items):
         """
@@ -57,13 +58,14 @@ class HTMLParser:
 
         return [content.get_text() for content in raw_content]
 
-    def get_css_items(self, css_vals):
+    def get_items(self, css_vals):
         """
         Returns all the items with specified css_val(s)
         css_val can be a string or a list of css vals
         """
-        query = css_vals if type(css_vals) == str else ",".join(css_val)
+        query = css_vals if type(css_vals) == str else ",".join(css_vals)
         return self.soup.select(query)
+
     def get_css_items_text(self, css_val):
         """
         Returns text for each instance of a given css item in
@@ -71,9 +73,9 @@ class HTMLParser:
         """
         raw_content = self.soup.select(css_val)
         return [content.get_text() for content in raw_content]
-
-    def decompose(self, tag, **css_items):
-        items = self.get_all_tag_items(tag, **css_items)
+    
+    def decompose_items(self, css_vals):
+        items = self.get_items(css_vals)
 
         for item in items:
             item.decompose()
