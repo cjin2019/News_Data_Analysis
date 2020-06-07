@@ -52,10 +52,22 @@ class HTMLParser:
         raw_content = self.soup.find_all(element, **attributes)
 
         return [content.get_text() for content in raw_content]
-  
-    def decompose(self, element, **attributes):
 
-        items = self.get_all_element_items(element, **attributes)
+    def get_css_items(self, css_val):
+        '''
+        Returns all the items with a specific css val (eg. class)
+        '''
+        return self.soup.select(css_val)
+    def get_css_items_text(self, css_val):
+        '''
+        Returns text for each instance of a given css item in
+        HTML
+        '''
+        raw_content = self.soup.select(css_val)
+        return [content.get_text() for content in raw_content]
+
+    def decompose(self, element):
+        items = self.get_all_element_items(element)
 
         for item in items:
             item.decompose()
