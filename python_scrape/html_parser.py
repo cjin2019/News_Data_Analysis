@@ -34,27 +34,28 @@ class HTMLParser:
         """
         return self.soup.prettify()
     
-    def get_first_element_item(self, element):
-        self.soup.find(element)
+    def get_first_element_item(self, element, **attributes):
+        self.soup.find(element, **attributes)
 
-    def get_all_element_items(self, element):
+    def get_all_element_items(self, element, **attributes):
         """
         Returns each instance of a given element
         in the HTML
         """
-        return self.soup.find_all(element)
+        return self.soup.find_all(element, **attributes)
 
-    def get_element_text(self, element):
+    def get_element_text(self, element, **attributes):
         """
         Returns text for each instance of a given element
         in the HTML
         """
-        raw_content = self.soup.find_all(element)
+        raw_content = self.soup.find_all(element, **attributes)
 
         return [content.get_text() for content in raw_content]
   
-    def decompose(self, element):
-        items = self.get_all_element_items(element)
+    def decompose(self, element, **attributes):
+
+        items = self.get_all_element_items(element, **attributes)
 
         for item in items:
             item.decompose()
