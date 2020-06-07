@@ -11,7 +11,7 @@ HEADLINE_MARKERS = {
 	'nbc': [],
 	'cnn': [],
 	'abc': {
-        'extract': {},
+        'extract': [],
         'decompose': [
             'nav',
             'article._footer',
