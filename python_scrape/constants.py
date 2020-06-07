@@ -5,3 +5,11 @@ NEWS_URLS = {
     'abc': 'https://abcnews.go.com/',
     'reuters': 'https://www.reuters.com/'
 }
+
+headline_markers = {
+	'fox': [],
+	'nbc': [],
+	'cnn': [],
+	'abc': [],
+	'reuters': []
+}
