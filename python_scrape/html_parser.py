@@ -57,12 +57,13 @@ class HTMLParser:
 
         return [content.get_text() for content in raw_content]
 
-    def get_css_items(self, css_val):
+    def get_css_items(self, css_vals):
         """
-        Returns all the items with a specific css val (eg. class)
+        Returns all the items with specified css_val(s)
+        css_val can be a string or a list of css vals
         """
-        return self.soup.select(css_val)
-
+        query = css_vals if type(css_vals) == str else ",".join(css_val)
+        return self.soup.select(query)
     def get_css_items_text(self, css_val):
         """
         Returns text for each instance of a given css item in
