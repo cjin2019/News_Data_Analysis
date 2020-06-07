@@ -34,22 +34,26 @@ class HTMLParser:
         """
         return self.soup.prettify()
     
-    def get_first_element_item(self, element):
-        self.soup.find(element)
-
-    def get_all_element_items(self, element):
+    def get_first_tag_item(self, tag, **css_items):
         """
-        Returns each instance of a given element
+        Returns the first instance of a given tag
         in the HTML
         """
-        return self.soup.find_all(element)
+        self.soup.find(tag, **css_items)
 
-    def get_element_text(self, element):
+    def get_all_tag_items(self, tag, **css_items):
         """
-        Returns text for each instance of a given element
+        Returns each instance of a given tag
         in the HTML
         """
-        raw_content = self.soup.find_all(element)
+        return self.soup.find_all(tag, **css_items)
+
+    def get_tag_text(self, tag, **css_items):
+        """
+        Returns text for each instance of a given tag
+        in the HTML
+        """
+        raw_content = self.soup.find_all(tag, **css_items)
 
         return [content.get_text() for content in raw_content]
 
@@ -84,12 +88,13 @@ class HTMLParser:
         """
         raw_content = self.get_css_items(css_vals)
         return [content.get_text() for content in raw_content]
-    def decompose(self, element):
-        items = self.get_all_element_items(element)
+
+    def decompose(self, tag, **css_items):
+        items = self.get_all_tag_items(tag, **css_items)
 
         for item in items:
             item.decompose()
-    
+
     @staticmethod   
     def output_to_file(content, filepath):
         """
