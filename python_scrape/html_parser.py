@@ -2,6 +2,7 @@
 Sources:
 1. https://www.dataquest.io/blog/web-scraping-tutorial-python/
 2. https://towardsdatascience.com/web-scraping-news-articles-in-python-9dd605799558
+3. https://www.crummy.com/software/BeautifulSoup/bs4/doc/#tag
 """
 import requests
 from bs4 import BeautifulSoup
@@ -9,6 +10,15 @@ from bs4 import BeautifulSoup
 class HTMLParser:
     def __init__(self, url):
         self.url = url
+        self.soup = self._soup()
+
+    def _soup(self):
+        page_content = self.get_html_content()
+        soup = BeautifulSoup(page_content, 'html.parser')
+        return soup
+
+    def reset_soup(self):
+        self.soup = self._soup()
 
     def get_html_content(self):
         """
@@ -22,21 +32,33 @@ class HTMLParser:
         """
         Returns html of webpage at url
         """
-        page_content = self.get_html_content()
-        soup = BeautifulSoup(page_content, 'html.parser')
-        return soup.prettify()
+        return self.soup.prettify()
+    
+    def get_first_element_item(self, element):
+        self.soup.find(element)
+
+    def get_all_element_items(self, element):
+        """
+        Returns each instance of a given element
+        in the HTML
+        """
+        return self.soup.find_all(element)
 
     def get_element_text(self, element):
         """
         Returns text for each instance of a given element
         in the HTML
         """
-        page_content = self.get_html_content()
-        soup = BeautifulSoup(page_content, 'html.parser')
-        raw_content = soup.find_all(element)
+        raw_content = self.soup.find_all(element)
 
         return [content.get_text() for content in raw_content]
   
+    def decompose(self, element):
+        items = self.get_all_element_items(element)
+
+        for item in items:
+            item.decompose()
+    
     @staticmethod   
     def output_to_file(content, filepath):
         """
