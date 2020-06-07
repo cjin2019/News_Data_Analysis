@@ -1,6 +1,6 @@
 import os
 from html_parser import HTMLParser
-from constants import NEWS_URLS, headline_markers
+from constants import NEWS_URLS, HEADLINE_MARKERS
 
 def create_directories():
     """
@@ -15,10 +15,10 @@ def get_headlines(parser, news):
     Returns a list of the headlines
     """
     css_vals = []
-    identifiers = headline_markers[news]
+    identifiers = HEADLINE_MARKERS[news]
     for css_type in identifiers:
         css_vals = css_vals + parser.get_all_css_format(identifiers[css_type], css_type)
-    titles_list = [title.strip() for title in parser.get_css_items_text(css_vals)]
+    titles_list = [title.strip() for title in parser.get_items_text(css_vals)]
     return titles_list
 
 if __name__ == "__main__":

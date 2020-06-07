@@ -34,6 +34,23 @@ class HTMLParser:
         """
         return self.soup.prettify()
 
+    def get_items(self, css_vals):
+        """
+        Returns all the items with specified element(s)
+        Assumes css_val(s) format (eg. class .class_name)
+        css_val can be a string or a list of css vals
+        """
+        query = css_vals if type(css_vals)==str else ",".join(css_vals)
+        return self.soup.select(query)
+
+    def get_items_text(self, css_vals):
+        """
+        Returns text for each instance of a given css item in
+        HTML
+        """
+        raw_content = self.get_items(css_vals)
+        return [content.get_text() for content in raw_content]
+
     def get_first_tag_item(self, tag, **css_items):
         """
         Returns the first instance of a given tag
@@ -74,22 +91,6 @@ class HTMLParser:
         Returns a list of (css_formatted element) of a particular css type (eg. class, id)
         """
         return [self.get_css_format(element, css_type) for element in elements]
-    def get_items(self, css_vals):
-        """
-        Returns all the items with specified element(s)
-        Assumes css_val(s) format (eg. class .class_name)
-        css_val can be a string or a list of css vals
-        """
-        query = css_vals if type(css_vals)==str else ",".join(css_vals)
-        return self.soup.select(query)
-
-    def get_css_items_text(self, css_vals):
-        """
-        Returns text for each instance of a given css item in
-        HTML
-        """
-        raw_content = self.get_css_items(css_vals)
-        return [content.get_text() for content in raw_content]
     
     def decompose_items(self, css_vals):
         items = self.get_items(css_vals)
