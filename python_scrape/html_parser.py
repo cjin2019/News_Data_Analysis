@@ -42,7 +42,7 @@ class HTMLParser:
         """
         Writes given content to file at a given filepath
         """
-        with open(filepath, 'w') as filename:
+        with open(filepath, 'w', encoding='utf-8') as filename:
             if isinstance(content, list):
                 for content_item in content:
                     filename.write(f'{content_item}\n')
