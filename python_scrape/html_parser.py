@@ -53,19 +53,36 @@ class HTMLParser:
 
         return [content.get_text() for content in raw_content]
 
+    def get_css_format(self, element, css_type):
+        """
+        Returns the element formatted to input into .select method for soup
+        """
+        add_tag = ''
+        if css_type == 'class':
+            add_tag = '.'
+        elif css_type == 'id':
+            add_tag = '#'
+        return add_tag + element
+
+    def get_all_css_format(self, elements, css_type):
+        """
+        Returns a list of (css_formatted element) of a particular css type (eg. class, id)
+        """
+        return [self.get_css_format(element, css_type) for element in elements]
     def get_css_items(self, css_vals):
         """
-        Returns all the items with specified css_val(s)
+        Returns all the items with specified element(s)
+        Assumes css_val(s) format (eg. class .class_name)
         css_val can be a string or a list of css vals
         """
         query = css_vals if type(css_vals) == str else ",".join(css_val)
         return self.soup.select(query)
-    def get_css_items_text(self, css_val):
+    def get_css_items_text(self, css_vals):
         """
         Returns text for each instance of a given css item in
         HTML
         """
-        raw_content = self.soup.select(css_val)
+        raw_content = self.get_css_items(css_vals)
         return [content.get_text() for content in raw_content]
     def decompose(self, element):
         items = self.get_all_element_items(element)
