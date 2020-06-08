@@ -1,27 +1,55 @@
 import os
 from html_parser import HTMLParser
+from cleaner import Cleaner
 from constants import NEWS_URLS, HEADLINE_MARKERS
 
-def create_directories():
+def create_directories(news_outlet):
     if not os.path.exists('output'):
         os.mkdir('output')
-    if not os.path.exists('output/abc'):
+    if not os.path.exists(f'output/{news_outlet}'):
         os.mkdir(f'output/{news_outlet}')
 
-if __name__ == "__main__":
-    create_directories()
+def output_html(news_outlet):
+    url = NEWS_URLS.get(news_outlet)
 
-    news_outlet = 'abc'
-    url = NEWS_URLS.get('abc')
+    print(f'outputing html at {url}')
 
-    print(f'scraping from {url}')
     html_parser = HTMLParser(url)
-    html_parser.decompose_items(HEADLINE_MARKERS.get('abc').get('decompose'))
     html_text = html_parser.get_html_text()
     html_parser.output_to_file(html_text, f'output/{news_outlet}/html_text.html')
-    titles_list = html_parser.get_items_text(HEADLINE_MARKERS.get('abc').get('extract'))
-    html_parser.output_to_file(titles_list, f'output/{news_outlet}/output.txt')
 
+def extract_titles(news_outlet):
+    url = NEWS_URLS.get(news_outlet)
+    
+    print(f'scraping from {url}')
+
+    html_parser = HTMLParser(url)
+    html_parser.decompose_items(HEADLINE_MARKERS.get(news_outlet).get('decompose'))
+
+    titles = html_parser.get_items_text(HEADLINE_MARKERS.get(news_outlet).get('extract'))
+    return titles
+
+def clean_titles(titles):
+    print('cleaning titles')
+
+    clean_titles = []
+
+    for title in titles:
+        clean_title = title.strip()
+        if len(clean_title) > 0:
+            clean_titles.append(clean_title)
+    
+    return clean_titles
+
+if __name__ == "__main__":
+    news_outlet = 'abc'
+
+    create_directories(news_outlet)
+
+    output_html(news_outlet)
+    cleaner = Cleaner(news_outlet)
+    clean_titles = cleaner.get_titles()
+    HTMLParser.output_to_file(clean_titles, f'output/{news_outlet}/output.txt')
 
     # <section id="main-container">
     # <article class="headlines inbox single row-item" 
