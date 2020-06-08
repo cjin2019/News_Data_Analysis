@@ -1,5 +1,6 @@
 import os
 from html_parser import HTMLParser
+from cleaner import Cleaner
 from constants import NEWS_URLS, HEADLINE_MARKERS
 
 def create_directories():
@@ -27,9 +28,11 @@ if __name__ == "__main__":
     news_outlet = 'reuters'
     url = NEWS_URLS.get(news_outlet)
 
-    print(f'scraping from {url}')
+    # print(f'scraping from {url}')
     html_parser = HTMLParser(url)
 
-    titles_list = get_headlines(html_parser, news_outlet)
+    # titles_list = get_headlines(html_parser, news_outlet)
+    cleaner = Cleaner(news_outlet)
+    titles_list = cleaner.get_titles()
     #get_headlines(html_parser, news_outlet)
     html_parser.output_to_file(titles_list, f'output/{news_outlet}/output.txt')

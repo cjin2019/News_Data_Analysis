@@ -21,9 +21,11 @@ class Cleaner:
         print(f'scraping titles from {url}')
 
         html_parser = HTMLParser(url)
-        html_parser.decompose_items(HEADLINE_MARKERS.get(self.news_outlet).get('decompose'))
-
-        return html_parser.get_items_text(HEADLINE_MARKERS.get(self.news_outlet).get('extract'))
+        if 'decompose' in HEADLINE_MARKERS[self.news_outlet]:
+            html_parser.decompose_items(HEADLINE_MARKERS.get(self.news_outlet).get('decompose'))
+        if 'extract' in HEADLINE_MARKERS[self.news_outlet]:
+            return html_parser.get_items_text(HEADLINE_MARKERS.get(self.news_outlet).get('extract'))
+        return []
 
     def clean_titles(self, titles):
         """

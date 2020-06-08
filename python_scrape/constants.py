@@ -8,7 +8,14 @@ NEWS_URLS = {
 
 HEADLINE_MARKERS = {
 	'fox': [],
-	'nbc': [],
+	'nbc': {
+		'extract':[
+			'.headline___38PFH',
+			'.a-la-carte__headline',
+			'.bacon-cards-twobyone__header-link vilynx_disabled',
+			'[class^=pancake__headline]'
+		]
+	},
 	'cnn': [],
 	'abc': {
         'extract': [
@@ -23,5 +30,8 @@ HEADLINE_MARKERS = {
             'div.live-callout'
         ]
     },
-	'reuters': {'class': ['story_title', 'article_heading']}
+	'reuters': {
+		'extract': [
+		'.story-title',
+		'.article_heading']}
 }
