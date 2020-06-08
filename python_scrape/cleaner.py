@@ -6,13 +6,19 @@ class Cleaner:
         self.news_outlet = news_outlet
 
     def get_titles(self):
+        """
+        Gets cleaned titles
+        """
         titles = self.scrape_titles()
         return self.clean_titles(titles)
 
     def scrape_titles(self):
+        """
+        Scrapes titles from url
+        """
         url = NEWS_URLS.get(self.news_outlet)
         
-        print(f'scraping from {url}')
+        print(f'scraping titles from {url}')
 
         html_parser = HTMLParser(url)
         html_parser.decompose_items(HEADLINE_MARKERS.get(self.news_outlet).get('decompose'))
@@ -20,6 +26,9 @@ class Cleaner:
         return html_parser.get_items_text(HEADLINE_MARKERS.get(self.news_outlet).get('extract'))
 
     def clean_titles(self, titles):
+        """
+        Clean list of titles
+        """
         print('cleaning titles')
 
         clean_titles = []
