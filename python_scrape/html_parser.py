@@ -6,6 +6,7 @@ Sources:
 """
 import requests
 import json
+import re
 from bs4 import BeautifulSoup
 
 class HTMLParser:
@@ -41,27 +42,12 @@ class HTMLParser:
     def get_item_text_from_script_tag(self, raw_content):
         """
         Returns a list of headlines from the raw_content (tags)
-        For CNN :(
         """
         script_strs = [str(one_script) for one_script in raw_content]
-        max_str_len_index = 0
-
-        # gets the longest string, the script contains the headlines
-        for i in range(1, len(script_strs)):
-            if len(script_strs[i]) > len(script_strs[max_str_len_index]):
-                max_str_len_index = i
-
-        # setup to get the tag
-        items_str = script_strs[max_str_len_index]
-        headline_str = '\"headline\":\"'
-        headline_len = len(headline_str)
-        index_item = items_str.find(headline_str)
-
+        pattern = '\"headline\":\"(.*?)\",' 
         items_text_list = []
-        while index_item!=-1:
-            end_index = items_str.find('",', index_item)
-            items_text_list.append(items_str[index_item + headline_len:end_index])
-            index_item = items_str.find(headline_str, end_index)
+        for script_text in script_strs:
+            items_text_list = items_text_list + re.findall(pattern, script_text)
 
         return items_text_list
     def get_items(self, css_vals):
