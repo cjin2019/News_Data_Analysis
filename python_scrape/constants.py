@@ -39,6 +39,8 @@ HEADLINE_MARKERS = {
     },
 	'reuters': {
 		'extract': [
-		'.story-title',
-		'.article_heading']}
+		    '.story-title',
+		    '.article_heading'
+        ]
+    }
 }
