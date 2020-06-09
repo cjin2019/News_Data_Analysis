@@ -39,10 +39,12 @@ class HTMLParser:
         """
         return self.soup.prettify()
 
-    def get_item_text_from_script_tag(self, raw_content):
+    def get_item_text_from_script_tag(self):
         """
         Returns a list of headlines from the raw_content (tags)
+        Assume there is a script tag
         """
+        raw_content = self.get_items('script')
         script_strs = [str(one_script) for one_script in raw_content]
         pattern = '\"headline\":\"(.*?)\",' 
         items_text_list = []
@@ -69,10 +71,17 @@ class HTMLParser:
         Returns text for each instance of a given css item in
         HTML
         """
-        raw_content = self.get_items(css_vals)
-        if css_vals[0] == 'script':
-            return self.get_item_text_from_script_tag(raw_content)
-        return [content.get_text() for content in raw_content]
+        from_script = []
+        css_vals_no_script = css_vals
+
+        if 'script' in css_vals:
+            from_script = self.get_item_text_from_script_tag()
+            script_index = css_vals.index('script')
+            css_vals_no_script = css_vals[0:script_index] + css_vals[script_index+1:]
+
+        raw_content_no_script = self.get_items(css_vals_no_script)
+
+        return [content.get_text() for content in raw_content_no_script] + from_script
     
     def get_css_format(self, element, css_type):
         """

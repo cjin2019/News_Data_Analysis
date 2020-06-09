@@ -20,7 +20,8 @@ HEADLINE_MARKERS = {
 			'.headline___38PFH',
 			'.a-la-carte__headline',
 			'.bacon-cards-twobyone__header-link vilynx_disabled',
-			'[class^=pancake__headline]'
+			'[class^=pancake__headline]',
+            'script'
 		]
 	},
 	'cnn': {
