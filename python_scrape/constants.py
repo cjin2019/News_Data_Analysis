@@ -7,7 +7,14 @@ NEWS_URLS = {
 }
 
 HEADLINE_MARKERS = {
-	'fox': [],
+	'fox': {
+        'extract': [
+            'header.info-header > h2 > a'
+        ],
+        'decompose': [
+            'section.collection.collection-section.full-episodes'
+        ]
+    },
 	'nbc': {
 		'extract':[
 			'.headline___38PFH',
