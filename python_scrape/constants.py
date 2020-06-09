@@ -47,7 +47,8 @@ HEADLINE_MARKERS = {
 		'.article_heading']}
 }
 
-remove_strs = [
-	'\u003cstrong>',
+REMOVE_STRS = [
+	'\\u003cstrong>',
+    '\\u003c/strong>',
 	'Top Photos of the Day'
 ]

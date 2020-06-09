@@ -27,6 +27,7 @@ def update_outputtxt(news_outlet):
     print(f'outputing titles for {news_outlet}')
     titles = cleaner.get_titles()
     HTMLParser.output_to_file(titles, f'output/{news_outlet}/output.txt')
+
 if __name__ == '__main__':
     create_directories()
     print('Type one of the following news outlets: abc, fox, cnn, nbc, reuters, below')
