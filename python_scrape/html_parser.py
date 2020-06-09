@@ -14,7 +14,7 @@ class HTMLParser:
 
     def _soup(self):
         page_content = self.get_html_content()
-        soup = BeautifulSoup(page_content, 'html.parser')
+        soup = BeautifulSoup(page_content, 'html5lib')
         return soup
 
     def reset_soup(self):
@@ -43,6 +43,11 @@ class HTMLParser:
         Assumes css_val(s) format (eg. class .class_name)
         css_val can be a string or a list of css vals
         """
+        if not css_vals:
+            return []
+        if len(css_vals) == 0:
+            return []
+
         query = css_vals if type(css_vals)==str else ",".join(css_vals)
         return self.soup.select(query)
 
