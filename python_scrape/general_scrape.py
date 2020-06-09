@@ -29,6 +29,7 @@ def update_outputtxt(news_outlet):
     HTMLParser.output_to_file(titles, f'output/{news_outlet}/output.txt')
 if __name__ == '__main__':
     create_directories()
-    news_outlet = 'nbc'
+    print('Type one of the following news outlets: abc, fox, cnn, nbc, reuters, below')
+    news_outlet = input('News Outlet:')
     output_html(news_outlet)
     update_outputtxt(news_outlet)

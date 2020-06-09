@@ -1,5 +1,5 @@
 from html_parser import HTMLParser
-from constants import NEWS_URLS, HEADLINE_MARKERS
+from constants import NEWS_URLS, HEADLINE_MARKERS, remove_strs
 
 class Cleaner:
     def __init__(self, news_outlet):
@@ -27,6 +27,13 @@ class Cleaner:
             return html_parser.get_items_text(HEADLINE_MARKERS.get(self.news_outlet).get('extract'))
         return []
 
+    def remove_str(self, title):
+        """
+        Removes unnecessary string
+        """
+        for remove_str in remove_strs:
+            title = title.replace(remove_str, '')
+        return title
     def clean_titles(self, titles):
         """
         Clean list of titles
@@ -36,7 +43,7 @@ class Cleaner:
         clean_titles = []
 
         for title in titles:
-            clean_title = title.strip()
+            clean_title = self.remove_str(title.strip())
             if len(clean_title) == 0:
                 continue
             if clean_title in clean_titles:

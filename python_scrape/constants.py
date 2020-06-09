@@ -16,7 +16,11 @@ HEADLINE_MARKERS = {
 			'[class^=pancake__headline]'
 		]
 	},
-	'cnn': [],
+	'cnn': {
+		'extract':[
+			'script'
+		]
+	},
 	'abc': {
         'extract': [
             'a'
@@ -35,3 +39,8 @@ HEADLINE_MARKERS = {
 		'.story-title',
 		'.article_heading']}
 }
+
+remove_strs = [
+	'\u003cstrong>',
+	'Top Photos of the Day'
+]
