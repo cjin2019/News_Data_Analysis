@@ -19,3 +19,5 @@ class DatabaseInteractor:
 		"""
 		Closes the connection once done
 		"""
+		self.connector.close()
+		self.cursor.close()

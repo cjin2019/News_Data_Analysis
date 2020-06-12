@@ -1,7 +1,7 @@
 import os
-from html_parser import HTMLParser
-from cleaner import Cleaner
-from constants import NEWS_URLS, HEADLINE_MARKERS
+from python_scrape.html_parser import HTMLParser
+from python_scrape.cleaner import Cleaner
+from python_scrape.constants import NEWS_URLS, HEADLINE_MARKERS
 
 def create_directories():
     """
