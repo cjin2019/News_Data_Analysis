@@ -2,13 +2,16 @@
 Analyze news content from different media
 
 ## How to Install
-1. Install python 3.7+
-2. Create virtual environment: python -m venv venv
-3. Activate virtual environment: 
-    (1) venv/Scripts/activate (windows)
-    (2) source venv/bin/activate (mac)
-4. Install requirements: pip install -r requirements.txt
-5. Install mysql server: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
+1. Install Python 3.7+
+2. Install MySQL Server and MySQL Connector for python:
+    1. windows: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
+    2. macOS: https://dev.mysql.com/doc/refman/8.0/en/osx-installation.html
+    3. linux: https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html
+3. Create virtual environment: `python -m venv venv`
+4. Activate virtual environment: 
+    1. windows: `venv/Scripts/activate`
+    2. macOS: `source venv/bin/activate`
+5. Install requirements: `pip install -r requirements.txt`
 
 ## How to Run
 
@@ -23,32 +26,30 @@ This project contains a script to scrape headlines from one of the following web
 - https://www.reuters.com/
 
 ### How to Install
-1. python -m venv venv 
-2. venv/Scripts/activate
-3. pip install -r requirements.txt
+1. `python -m venv venv` 
+2. Activate virtual environment: 
+    1. windows: `venv/Scripts/activate`
+    2. macOS: `source venv/bin/activate`
+3. `pip install -r requirements.txt`
 
 ### How to Run
-1. cd python_scrape
-2. python general_scrape.py
+1. `cd python_scrape`
+2. `python general_scrape.py`
 
 ## JS Scrape
 This project contains a javascript script to scrape headlines from one of the following websites.
-- https://abcnews.go.com/
-- https://www.cnn.com/
 - https://www.foxnews.com/
-- https://www.nbcnews.com/
-- https://www.reuters.com/
 
 Note: This script may be outdated. We recommend you use the python script to scrape websites.
 
 ### How to Install
 1. install npm, node
-2. cd repository
-3. npm install cheerio axios
+2. `cd repository`
+3. `npm install cheerio axios`
 
 ### How to Run
-1. cd scrape_web
-2. node scrape_web/scrape1.js
+1. `cd scrape_web`
+2. `node scrape_web/scrape1.js`
 
 ## Project Description
 

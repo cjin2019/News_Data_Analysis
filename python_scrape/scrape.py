@@ -4,8 +4,8 @@ Sources:
 2. https://towardsdatascience.com/web-scraping-news-articles-in-python-9dd605799558
 """
 import os
-from html_parser import HTMLParser
-from constants import NEWS_URLS
+from python_scrape.html_parser import HTMLParser
+from python_scrape.constants import NEWS_URLS
 
 def create_directories():
     if not os.path.exists('output'):
