@@ -17,3 +17,7 @@ Analyze news content from different media
 ### How to Run
 1. cd python_scrape
 2. python scrape.py
+
+## Store data
+
+
