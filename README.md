@@ -38,11 +38,7 @@ This project contains a script to scrape headlines from one of the following web
 
 ## JS Scrape
 This project contains a javascript script to scrape headlines from one of the following websites.
-- https://abcnews.go.com/
-- https://www.cnn.com/
 - https://www.foxnews.com/
-- https://www.nbcnews.com/
-- https://www.reuters.com/
 
 Note: This script may be outdated. We recommend you use the python script to scrape websites.
 
