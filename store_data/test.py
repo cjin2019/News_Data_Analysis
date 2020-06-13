@@ -9,5 +9,7 @@ dbI = DatabaseInteractor(user, password = passwd)
 #dbI.create_database('testDB2')
 dbI.choose_database('testDB2')
 dbI.create_table(TABLE_EX1)
+print(dbI.retrieve_columns('customers'))
+dbI.insert_one_row("customers", (1, "Alison", "125 Elm Street"))
 dbI.close()
 
