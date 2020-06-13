@@ -3,13 +3,13 @@ from python_scrape.html_parser import HTMLParser
 from python_scrape.cleaner import Cleaner
 from python_scrape.constants import NEWS_URLS, HEADLINE_MARKERS
 
-def create_directories():
+def create_directories(news_outlet):
     """
     Returns a new directory
     """
     if not os.path.exists('output'):
         os.mkdir('output')
-    if not os.path.exists('output/abc'):
+    if not os.path.exists('output/' + news_outlet):
         os.mkdir(f'output/{news_outlet}')
 
 def output_html(news_outlet):
@@ -29,8 +29,8 @@ def update_outputtxt(news_outlet):
     HTMLParser.output_to_file(titles, f'output/{news_outlet}/output.txt')
 
 if __name__ == '__main__':
-    create_directories()
     print('Type one of the following news outlets: abc, fox, cnn, nbc, reuters, below')
     news_outlet = input('News Outlet:')
+    create_directories(news_outlet)
     output_html(news_outlet)
     update_outputtxt(news_outlet)
