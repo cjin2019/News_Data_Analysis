@@ -41,7 +41,7 @@ class DatabaseInteractor:
             else:
                 print(err)
 
-    def create_table(self, tble, db_name = None):
+    def create_table(self, tble_command, db_name = None):
         """
         Create a table in the database (provided by self.connector 
         if db_name = None)
@@ -49,7 +49,7 @@ class DatabaseInteractor:
         if db_name != None:
             self.choose_database(db_name)
         try:
-            self.cursor.execute(tble)
+            self.cursor.execute(tble_command)
             print('Created table in database')
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
