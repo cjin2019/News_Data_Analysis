@@ -1,6 +1,6 @@
 ##Note: need to create configuration file to access mysql
-from database_interactor import DatabaseInteractor
-from config import USER_INFO
+from store_data.database_interactor import DatabaseInteractor
+from store_data.config import USER_INFO
 from sql_table import TABLE_EX1
 
 user = USER_INFO['user']

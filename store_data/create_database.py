@@ -1,0 +1,2 @@
+from store_data.database_interactor import DatabaseInteractor
+

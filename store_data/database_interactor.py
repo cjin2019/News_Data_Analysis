@@ -1,12 +1,18 @@
 import mysql.connector 
 from mysql.connector import errorcode
+
 class DatabaseInteractor:
-    def __init__(self, username, password = None):
+    def __init__(self, username, password=None):
         """
 		Connects to the user for mysql 
 		"""
-        self.connector = mysql.connector.connect(user = username, password = password, buffered = True)
+        self.connector = mysql.connector.connect(
+			user=username, 
+			password=password, 
+			buffered=True
+		)
         self.cursor = self.connector.cursor(self.connector)
+
     def create_database(self, db_name):
         """
     	Create a database (if it doesn't exist)
@@ -16,7 +22,9 @@ class DatabaseInteractor:
             self.cursor.execute(create_db_cmd)
             self.connector.database = db_name
         except mysql.connector.Error as err:
+			print(f'Error occurred: {err}')
             print('Failed to create database')
+
     def choose_database(self, db_name):
         """
         Switch to database with db_name
@@ -31,6 +39,7 @@ class DatabaseInteractor:
                 print ('Database created')
             else:
                 print(err)
+
     def create_table(self, tble, db_name = None):
         """
         Create a table in the database (provided by self.connector 
@@ -46,6 +55,7 @@ class DatabaseInteractor:
                 print("Table exists already")
             else:
                 print(err)
+
     def close(self):
         """
 		Closes the connection once done. Please add this execution to ensure 
