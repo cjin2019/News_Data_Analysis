@@ -33,8 +33,7 @@ This project contains a script to scrape headlines from one of the following web
 3. `pip install -r requirements.txt`
 
 ### How to Run
-1. `cd python_scrape`
-2. `python general_scrape.py`
+`python general_scrape.py`
 
 ## JS Scrape
 This project contains a javascript script to scrape headlines from one of the following websites.

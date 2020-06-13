@@ -9,7 +9,7 @@ def create_directories(news_outlet):
     """
     if not os.path.exists('output'):
         os.mkdir('output')
-    if not os.path.exists('output/' + news_outlet):
+    if not os.path.exists(f'output/{news_outlet}'):
         os.mkdir(f'output/{news_outlet}')
 
 def output_html(news_outlet):
