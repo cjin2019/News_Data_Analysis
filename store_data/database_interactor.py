@@ -56,6 +56,7 @@ class DatabaseInteractor:
                 print("Table exists already")
             else:
                 print(err)
+
     def retrieve_columns(self, tble_name):
         """
         Retrieves the columns from tble_name
@@ -68,6 +69,7 @@ class DatabaseInteractor:
             return self.cursor.fetchall()
         except mysql.connector.Error as err:
             print('Retrieve Table Error')
+
     def insert_one_row(self, tble_name, datum):
         """
         Inserts into table the corresponding datum
@@ -85,6 +87,7 @@ class DatabaseInteractor:
             self.connector.commit()                                 #makes sure the changes are actually made to table
         except mysql.connector.Error as err:
             print('Insertion Error')
+
     def insert_many_rows(self, tble_name, data):
         """
         Insert into table many rows from data
