@@ -7,6 +7,7 @@ class DatabaseInteractor:
 		"""
         self.connector = mysql.connector.connect(user = username, password = password, buffered = True)
         self.cursor = self.connector.cursor(self.connector)
+
     def create_database(self, db_name):
         """
     	Create a database (if it doesn't exist)
@@ -17,6 +18,7 @@ class DatabaseInteractor:
             self.connector.database = db_name
         except mysql.connector.Error as err:
             print('Failed to create database')
+
     def choose_database(self, db_name):
         """
         Switch to database with db_name
@@ -31,10 +33,12 @@ class DatabaseInteractor:
                 print ('Database created')
             else:
                 print(err)
+
     def create_table(self, tble, db_name = None):
         """
         Create a table in the database (provided by self.connector 
         if db_name = None)
+        tble is a sql command
         """
         if db_name != None:
             self.choose_database(db_name)
@@ -46,6 +50,7 @@ class DatabaseInteractor:
                 print("Table exists already")
             else:
                 print(err)
+
     def retrieve_columns(self, tble_name):
         """
         Retrieves the columns from tble_name
@@ -58,6 +63,7 @@ class DatabaseInteractor:
             return self.cursor.fetchall()
         except mysql.connector.Error as err:
             print('Retrieve Table Error')
+
     def change_one_sql_command(self, sql_command):
         """
         SQL command that changes the database/table
@@ -67,6 +73,7 @@ class DatabaseInteractor:
             self.connector.commit()
         except mysql.connector.Error as err:
             print('Error in executing change command')
+
     def fetch_one_sql_command(self, sql_command):
         """
         SQL command that fetches values 
@@ -78,6 +85,7 @@ class DatabaseInteractor:
             return self.cursor.fetchall()
         except mysql.connector.Error as err:
             print('Error in fetching')
+
     def insert_one_row(self, tble_name, datum):
         """
         Inserts into table the corresponding datum
@@ -95,6 +103,7 @@ class DatabaseInteractor:
             self.connector.commit()                                 #makes sure the changes are actually made to table
         except mysql.connector.Error as err:
             print('Insertion Error')
+
     def insert_many_rows(self, tble_name, data):
         """
         Insert into table many rows from data
