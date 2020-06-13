@@ -70,6 +70,28 @@ class DatabaseInteractor:
         except mysql.connector.Error as err:
             print('Retrieve Table Error')
 
+    def change_one_sql_command(self, sql_command):
+        """
+        SQL command that changes the database/table
+        """
+        try:
+            self.cursor.execute(sql_command)
+            self.connector.commit()
+        except mysql.connector.Error as err:
+            print('Error in executing change command')
+
+    def fetch_one_sql_command(self, sql_command):
+        """
+        SQL command that fetches values 
+        Returns a list of tuple if there are results
+        Otherwise, an empty list if there are none
+        """
+        try:
+            self.cursor.execute(sql_command)
+            return self.cursor.fetchall()
+        except mysql.connector.Error as err:
+            print('Error in fetching')
+
     def insert_one_row(self, tble_name, datum):
         """
         Inserts into table the corresponding datum
