@@ -11,7 +11,7 @@ class DatabaseInteractor:
         """
     	Create a database (if it doesn't exist)
     	"""
-        create_db_cmd = 'CREATE DATABASE IF NOT EXISTS {db_name}'
+        create_db_cmd = f'CREATE DATABASE IF NOT EXISTS {db_name}'
         try:
             self.cursor.execute(create_db_cmd)
             self.connector.database = db_name
