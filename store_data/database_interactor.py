@@ -66,16 +66,29 @@ class DatabaseInteractor:
 
         Possible Errors: datum is wrong length, the datatype is incorrect, etc
         """
-        cols = self.retrieve_columns(tble_name)
-        col_names = tuple([col[0] for col in cols])
-        input_format = '(' + '%s,' * (len(cols)-1) + '%s' + ')'
+        ncols = len(self.retrieve_columns(tble_name))
+        input_format = '(' + '%s,' * (ncols-1) + '%s' + ')'
         insert_stmt = f'INSERT INTO {tble_name} VALUES {input_format}'
 
         try:
             self.cursor.execute(insert_stmt, datum)
-            self.connector.commit() #makes sure the changes are actually made to table
+            self.connector.commit()                                 #makes sure the changes are actually made to table
         except mysql.connector.Error as err:
             print('Insertion Error')
+    def insert_many_rows(self, tble_name, data):
+        """
+        Insert into table many rows from data
+        Takes in data: a list of tuples
+        """
+        ncols = len(self.retrieve_columns(tble_name))
+        input_format = '(' + '%s,' * (ncols-1) + '%s' + ')'
+        insert_many_stmt = f'INSERT INTO {tble_name} VALUES {input_format}'
+
+        try:
+            self.cursor.executemany(insert_many_stmt, data)
+            self.connector.commit()
+        except mysql.connector.Error as err:
+            print('Inserting many Error')
 
     def close(self):
         """
