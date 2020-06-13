@@ -17,12 +17,13 @@ class DatabaseInteractor:
         """
     	Create a database (if it doesn't exist)
     	"""
-        create_db_cmd = 'CREATE DATABASE IF NOT EXISTS {db_name}'
+        create_db_cmd = f'CREATE DATABASE IF NOT EXISTS {db_name}'
         try:
             self.cursor.execute(create_db_cmd)
             self.connector.database = db_name
         except mysql.connector.Error as err:
-			print(f'Error occurred: {err}')
+            error_message = f'Error occurred: {err}'
+            print(error_message)
             print('Failed to create database')
 
     def choose_database(self, db_name):
