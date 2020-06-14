@@ -29,8 +29,8 @@ INSERT_CMDS = [
     "INSERT INTO NewsSource \
     (Name, Url) \
     VALUES \
-    ROW('abc', 'https://abcnews.go.com/'), \
-    ROW('fox', 'https://www.foxnews.com/'), \
-    ROW('nbc', 'https://www.nbcnews.com/'), \
-    ROW('reuters', 'https://www.reuters.com/');"
+    ('abc', 'https://abcnews.go.com/'), \
+    ('fox', 'https://www.foxnews.com/'), \
+    ('nbc', 'https://www.nbcnews.com/'), \
+    ('reuters', 'https://www.reuters.com/');"
 ]
