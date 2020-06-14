@@ -21,14 +21,16 @@ def fill_tables(database_interactor):
     for cmd in INSERT_CMDS:
         database_interactor.change_one_sql_command(cmd)
 
+
 if __name__ == '__main__':
     print('Starting to create database ...')
     database_interactor = DatabaseInteractor(
         USER_INFO['user'],
         USER_INFO['password']
     )
-    create_database(database_interactor)
-    create_tables(database_interactor)
+    #create_database(database_interactor)
+    #create_tables(database_interactor)
+    database_interactor.choose_database(DATABASE_NAME)
     fill_tables(database_interactor)
     print('Finished! Closing database connector ...')
     database_interactor.close()
