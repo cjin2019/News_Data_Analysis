@@ -5,7 +5,7 @@ Sources:
 
 from store_data.database_interactor import DatabaseInteractor
 from store_data.constants import DATABASE_NAME, CREATE_TABLES_CMDS, INSERT_CMDS
-import config
+from config import USER_INFO
 
 def create_database(database_interactor):
     print('creating database')
@@ -24,8 +24,8 @@ def fill_tables(database_interactor):
 if __name__ == '__main__':
     print('Starting to create database ...')
     database_interactor = DatabaseInteractor(
-        config.username,
-        config.password
+        USER_INFO['user'],
+        USER_INFO['password']
     )
     create_database(database_interactor)
     create_tables(database_interactor)
