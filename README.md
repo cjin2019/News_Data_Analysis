@@ -1,23 +1,26 @@
 # News_Data_Analysis
 Analyze news content from different media
 
-## How to Install
+## How to Install/Setup
 1. Install Python 3.7+
-2. Install MySQL Server and MySQL Connector for python:
-    1. windows: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
-    2. macOS: https://dev.mysql.com/doc/refman/8.0/en/osx-installation.html
-    3. linux: https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html
-3. Create virtual environment: `python -m venv venv`
-4. Activate virtual environment: 
+2. Create virtual environment: `python -m venv venv`
+3. Activate virtual environment: 
     1. windows: `venv/Scripts/activate`
     2. macOS: `source venv/bin/activate`
-5. Install requirements: `pip install -r requirements.txt`
+4. Install requirements: `pip install -r requirements.txt`
+5. MySQL Setup:
+    1. Install MySQL Server and MySQL Connector for python:
+        1. windows: https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
+        2. macOS: https://dev.mysql.com/doc/refman/8.0/en/osx-installation.html
+        3. linux: https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html
+    2. Create `config.py`. See `config.example.py` template for what values to put in `config.py`.
+    3. Create database: `python create_database.py`
 
 ## How to Run
 
 Project not finished! Instructions will be available when project is completed.
 
-## Python scrape
+## Scrape Website
 This project contains a script to scrape headlines from one of the following websites.
 - https://abcnews.go.com/
 - https://www.cnn.com/

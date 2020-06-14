@@ -79,6 +79,7 @@ class DatabaseInteractor:
             self.cursor.execute(sql_command)
             self.connector.commit()
         except mysql.connector.Error as err:
+            print(err)
             print('Error in executing change command')
 
     def fetch_one_sql_command(self, sql_command):
