@@ -77,9 +77,11 @@ Description of our process:
 Resources that we used:
 - https://www.edureka.co/blog/mysql-tutorial/
 - https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/rdbms.pdf
-- 
+- https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html
 
 ### 3. Analyze data
+
+Resources that we used:
 
 
 

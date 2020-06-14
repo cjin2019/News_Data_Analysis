@@ -1,10 +1,5 @@
-"""
-Sources:
-1. https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html
-"""
-
-from store_data.database_interactor import DatabaseInteractor
-from store_data.constants import DATABASE_NAME, CREATE_TABLES_CMDS, INSERT_CMDS
+from core.database.database_interactor import DatabaseInteractor
+from core.database.constants import DATABASE_NAME, CREATE_TABLES_CMDS, INSERT_CMDS
 from config import USER_INFO
 
 def create_database(database_interactor):

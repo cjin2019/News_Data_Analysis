@@ -1,4 +1,4 @@
-from store_data.data_manager import DataManager
+from core.database.data_manager import DataManager
 
 if __name__ == '__main__':
 	dbManager = DataManager()

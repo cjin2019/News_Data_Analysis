@@ -1,5 +1,5 @@
-from python_scrape.cleaner import Cleaner
-from store_data.data_manager import DataManager
+from core.scrape.cleaner import Cleaner
+from core.database.data_manager import DataManager
 
 class DataRetriever:
     @staticmethod

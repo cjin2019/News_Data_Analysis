@@ -1,7 +1,7 @@
 ##Note: need to create configuration file to access mysql
-from store_data.database_interactor import DatabaseInteractor
-from store_data.config import USER_INFO
-from store_data.sql_table import TABLE_EX1
+from core.database.database_interactor import DatabaseInteractor
+from config import USER_INFO
+#from core.database.sql_table import TABLE_EX1
 
 user = USER_INFO['user']
 passwd = USER_INFO['password']
