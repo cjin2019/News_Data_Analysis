@@ -14,7 +14,8 @@ Analyze news content from different media
         2. macOS: https://dev.mysql.com/doc/refman/8.0/en/osx-installation.html
         3. linux: https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html
     2. Create `config.py`. See `config.example.py` template for what values to put in `config.py`.
-    3. Create database: `python create_database.py`
+    3. (For MySQL Server) Create database: `python create_database.py`
+    4. Connect to MySQL:
 
 ## How to Run
 
@@ -68,9 +69,19 @@ Resources that we used:
 
 ### 2. Store data in database
 
+Description of our process:
+1. Setup MySQL server (see Install section)
+2. Used mysql-connector-python package to create database (see Install section)
+3. Used mysql-connector-python package to insert headlines data into database
+
 Resources that we used:
-https://www.postgresql.org/docs/12/tutorial.html
-https://www.hostingadvice.com/how-to/free-postgresql-hosting/
-https://www.edureka.co/blog/mysql-tutorial/
-https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/rdbms.pdf
+- https://www.edureka.co/blog/mysql-tutorial/
+- https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/rdbms.pdf
+- https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html
+
+### 3. Analyze data
+
+Resources that we used:
+
+
 

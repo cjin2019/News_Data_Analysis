@@ -1,5 +1,5 @@
-from python_scrape.html_parser import HTMLParser
-from python_scrape.constants import NEWS_URLS, HEADLINE_MARKERS, REMOVE_STRS
+from core.scrape.html_parser import HTMLParser
+from core.scrape.scrape_constants import NEWS_URLS, HEADLINE_MARKERS, REMOVE_STRS
 
 class Cleaner:
     def __init__(self, news_outlet):
