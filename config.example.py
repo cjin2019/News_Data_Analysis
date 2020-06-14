@@ -1,4 +1,4 @@
 # Username of an account on MySQL Server
-username =
+username = ''
 # Password of an account on MySQL Server
-password =
+password = ''
