@@ -94,6 +94,15 @@ class DatabaseInteractor:
         except mysql.connector.Error as err:
             print('Error in fetching')
 
+    def close(self):
+        """
+		Closes the connection once done. Please add this execution to ensure 
+        connections are closed!
+		"""
+        self.connector.close()
+        self.cursor.close()
+
+    # perhaps remove later
     def insert_one_row(self, tble_name, datum):
         """
         Inserts into table the corresponding datum
@@ -126,11 +135,3 @@ class DatabaseInteractor:
             self.connector.commit()
         except mysql.connector.Error as err:
             print('Inserting many Error')
-
-    def close(self):
-        """
-		Closes the connection once done. Please add this execution to ensure 
-        connections are closed!
-		"""
-        self.connector.close()
-        self.cursor.close()

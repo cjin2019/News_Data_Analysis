@@ -75,8 +75,9 @@ Description of our process:
 3. Used mysql-connector-python package to insert headlines data into database
 
 Resources that we used:
-https://www.edureka.co/blog/mysql-tutorial/
-https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/rdbms.pdf
+- https://www.edureka.co/blog/mysql-tutorial/
+- https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/rdbms.pdf
+- 
 
 ### 3. Analyze data
 

@@ -28,8 +28,8 @@ if __name__ == '__main__':
         USER_INFO['user'],
         USER_INFO['password']
     )
-    #create_database(database_interactor)
-    #create_tables(database_interactor)
+    create_database(database_interactor)
+    create_tables(database_interactor)
     database_interactor.choose_database(DATABASE_NAME)
     fill_tables(database_interactor)
     print('Finished! Closing database connector ...')
