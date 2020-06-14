@@ -45,6 +45,7 @@ class DatabaseInteractor:
         """
         Create a table in the database (provided by self.connector 
         if db_name = None)
+        tble is a sql command
         """
         if db_name != None:
             self.choose_database(db_name)
