@@ -81,7 +81,11 @@ Resources that we used:
 
 ### 3. Analyze data
 
-Resources that we used:
+Description of our process:
+1. Used Natural Language Processing Modules: nltk
+2.
 
+Resources that we used:
+- https://github.com/cjhutto/vaderSentiment#resources-and-dataset-descriptions
 
 
