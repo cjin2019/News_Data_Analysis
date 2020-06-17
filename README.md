@@ -87,5 +87,4 @@ Description of our process:
 
 Resources that we used:
 - https://github.com/cjhutto/vaderSentiment#resources-and-dataset-descriptions
-
-
+- https://planspace.org/20150607-textblob_sentiment/

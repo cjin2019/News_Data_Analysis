@@ -1,8 +1,18 @@
 from nltk.corpus import opinion_lexicon
 from nltk.tokenize import treebank
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from textblob import TextBlob
 
 class SentimentAnalyzer:
+
+	def retrieve_sentiment_textblob(self, sentence):
+		"""
+		Returns a sentiment TextBlob object that
+		has a polarity score and subjectivity score
+
+		Find more about the scoring from the link in README
+		"""
+		return TextBlob(sentence).sentiment
 
 	def liu_and_hu_polarity(self, sentence):
 		"""
