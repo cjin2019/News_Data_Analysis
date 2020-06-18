@@ -55,7 +55,7 @@ class DataManager:
 		if news_source is None, return all headlines
 		"""
 		if news_source==None:
-			return [row[1] for row in self.get_all_headlines()]
+			return [row[1] for row in self.get_all_ids_headlines()]
 
 		fetch_cmd = f'SELECT Headline.Content \
 					FROM ((Headline \
