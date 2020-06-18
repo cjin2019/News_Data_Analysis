@@ -1,9 +1,21 @@
 from nltk.corpus import opinion_lexicon
 from nltk.tokenize import treebank
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 from textblob import TextBlob
 
+from pattern.en import sentiment
+
 class SentimentAnalyzer:
+
+	def retrieve_sentiment_pattern(self, sentence):
+		"""
+		Returns a tuple (sentiment, subjectivity) score
+		using the pattern package
+
+		Same scoring metric as textblob
+		"""
+		return sentiment(sentence)
 
 	def retrieve_sentiment_textblob(self, sentence):
 		"""

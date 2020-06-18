@@ -35,6 +35,20 @@ class DataManager:
 		rows = self.db_interactor.fetch_one_sql_command(fetch_cmd)
 		return rows
 
+	def get_headlines_with_keyword(self, keyword):
+		"""
+		Returns a list of headlines with the keyword
+		"""
+		fetch_cmd = f'SELECT Headline.Content \
+					  FROM Headline \
+					  WHERE Headline.Content \
+					  LIKE "%{keyword}%"'
+		rows = self.db_interactor.fetch_one_sql_command(fetch_cmd)
+		if rows == None:
+			return []
+		return [row[0] for row in rows]
+
+
 	def get_headlines(self, news_source = None):
 		"""
 		Returns a list of headlines for a new source

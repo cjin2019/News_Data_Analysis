@@ -92,6 +92,7 @@ class DatabaseInteractor:
             self.cursor.execute(sql_command)
             return self.cursor.fetchall()
         except mysql.connector.Error as err:
+            print(err)
             print('Error in fetching')
 
     def close(self):
