@@ -82,11 +82,12 @@ Resources that we used:
 ### 3. Analyze data
 
 Description of our process:
-1. Used Natural Language Processing Modules: nltk, spacy
+1. Tested different Natural Language Processing Modules: nltk, spacy, textblob, pattern, rake-nltk
 2. Used the en_core_web_sm model from spacy to retrieve entities
 
-Resources that we used:
+Resources that we may use:
 - https://github.com/cjhutto/vaderSentiment#resources-and-dataset-descriptions
 - https://planspace.org/20150607-textblob_sentiment/
 - https://www.dataquest.io/blog/tutorial-text-classification-in-python-using-spacy/
 - https://stackabuse.com/python-for-nlp-introduction-to-the-pattern-library/
+- https://pypi.org/project/rake-nltk/
