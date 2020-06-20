@@ -35,6 +35,56 @@ class DataManager:
 		rows = self.db_interactor.fetch_one_sql_command(fetch_cmd)
 		return rows
 
+	def helper_AND(self, keywords):
+		"""
+		Returns the string sql condition for AND
+		"""
+		conds_stmt = ''
+		for i in range(len(keywords)):
+			keyword = keywords[i]
+			cond_stmt = f' Headline.Content LIKE "%{keyword}%"'
+			conds_stmt += cond_stmt
+			if i < len(keywords)-1:
+				conds_stmt += ' AND'
+		return '('+ conds_stmt[1:] + ')'
+
+	def helper_OR(self, keywords):
+		"""
+		Returns the string sql condition for OR
+		Keywords is a list of tuples and string
+		Tuples are keywords that all must appear in headlines
+		"""
+		conds_stmt = ''
+		for i in range(len(keywords)):
+			keyword = keywords[i]
+			cond_stmt = ''
+			if type(keyword)==str:
+				cond_stmt = f' Headline.Content LIKE "%{keyword}%"'
+			else:
+				cond_stmt = self.helper_AND(keyword)
+			conds_stmt += cond_stmt
+			if i < len(keywords)-1:
+				conds_stmt += ' OR'
+
+		return '(' + conds_stmt.strip() + ')'
+
+	def get_headlines_with_keywords(self, keywords):
+		"""
+		Returns a list of headlines with the corresponding the list
+		of keywords
+		List contains tuples and/or string
+		a tuple performs AND relationship
+		each item in list performs an OR relationship
+		"""
+		cond_stmt = self.helper_OR(keywords)
+		fetch_cmd = f'SELECT Headline.Content \
+					  FROM Headline \
+					  WHERE {cond_stmt}'
+		rows = self.db_interactor.fetch_one_sql_command(fetch_cmd)
+		if rows == None:
+			return []
+		return [row[0] for row in rows]
+
 	def get_headlines_with_keyword(self, keyword):
 		"""
 		Returns a list of headlines with the keyword
