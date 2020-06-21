@@ -1,5 +1,6 @@
 from core.scrape.cleaner import Cleaner
 from core.database.data_manager import DataManager
+from data_analysis.sentiment_analyzer import SentimentAnalyzer
 
 class DataRetriever:
     def add_key_words(self, data_manager, title):
@@ -8,8 +9,9 @@ class DataRetriever:
             data_manager.insert_keyword(keyword)
 
     def add_sentiment_values(self, data_manager, title):
-        vader = 0 # add calculation for Vader
-        liu_hu = 0 # add calculation for Liu-Hu
+        sentiment_analyzer = SentimentAnalyzer()
+        vader = sentiment_analyzer.vader_polarity(title)
+        liu_hu = sentiment_analyzer.liu_and_hu_polarity(title)
 
         data_manager.insert_sentiment_values(title, vader, liu_hu)
 
