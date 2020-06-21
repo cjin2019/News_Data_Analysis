@@ -88,4 +88,6 @@ Description of our process:
 Resources that we used:
 - https://github.com/cjhutto/vaderSentiment#resources-and-dataset-descriptions
 
+### 4. Automate gathering and storing data into database
+
 
