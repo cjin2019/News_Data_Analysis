@@ -16,6 +16,29 @@ class DataManager:
 		idNews = self.get_rows('NewsSource', 'Name', news_source)[0][0]
 		insert_cmd = f'INSERT INTO Headline (Content, NewsSourceId) VALUES ("{headline}", {idNews});'
 		self.db_interactor.change_one_sql_command(insert_cmd)
+	
+	def insert_sentiment_values(self, headline, vader, liu_hu):
+		"""
+		Insert Vader and Liu-Hu values for a given headline
+		"""
+		idHeadline = self.get_rows('Headline', 'Content', headline)[0][0]
+		insert_cmd = f'UPDATE Customers \
+			SET Vader = {vader}, LiuHu = {liu_hu} \
+			WHERE Id = {idHeadline};'
+		self.db_interactor.change_one_sql_command(insert_cmd)
+
+	def insert_keyword(self, headline, keyword):
+		num_keyword_cmd = f'SELECT COUNT(*) FROM Keyword WHERE Content = "{keyword}"'
+		num_keyword = self.db_interactor.fetch_one_sql_command(num_keyword_cmd)[0][0]
+
+		if num_keyword == 0:
+			insert_keyword_cmd = f'INSERT INTO Keyword (Content) VALUES ("{keyword}");'
+			self.db_interactor.change_one_sql_command(insert_keyword_cmd)
+
+		idHeadline = self.get_rows('Headline', 'Content', headline)[0][0]
+		idKeyword = self.get_rows('Keyword', 'Content', keyword)[0][0]
+		insert_headline_keyword_cmd = f'INSERT INTO HeadlineKeyword (HeadlineId, KeywordId) VALUES ({idHeadline}, {idKeyword});'
+		self.db_interactor.change_one_sql_command(insert_headline_keyword_cmd)
 
 	def get_rows(self, tble_name, column_name, item_value):
 		"""
