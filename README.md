@@ -6,7 +6,7 @@ Analyze news content from different media
 2. Create virtual environment: `python -m venv venv`
 3. Activate virtual environment: 
     1. windows: `venv/Scripts/activate`
-    2. macOS: `source venv/bin/activate`
+    2. macOS/linux: `source venv/bin/activate`
 4. Install requirements: `pip install -r requirements.txt`
 5. MySQL Setup:
     1. Install MySQL Server and MySQL Connector for python:
@@ -33,7 +33,7 @@ This project contains a script to scrape headlines from one of the following web
 1. `python -m venv venv` 
 2. Activate virtual environment: 
     1. windows: `venv/Scripts/activate`
-    2. macOS: `source venv/bin/activate`
+    2. macOS/linux: `source venv/bin/activate`
 3. `pip install -r requirements.txt`
 
 ### How to Run
@@ -90,4 +90,10 @@ Resources that we used:
 
 ### 4. Automate gathering and storing data into database
 
+Description of our process:
+1. Set up a cron job (we are running on a ubuntu machine). For windows, you may need to use task scheduler.
+
+Resources that we used:
+- https://help.ubuntu.com/community/CronHowto
+- https://www.liquidweb.com/kb/create-a-cron-task-in-ubuntu-16-04/
 
