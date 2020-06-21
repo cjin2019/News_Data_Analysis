@@ -13,13 +13,8 @@ class DataManager:
 		"""
 		Updates the database when inserting the headline
 		"""
-		insert_cmd = f'INSERT INTO Headline (Content) VALUES ("{headline}");'
-		self.db_interactor.change_one_sql_command(insert_cmd)
 		idNews = self.get_rows('NewsSource', 'Name', news_source)[0][0]
-		idHeadline = self.get_rows('Headline', 'Content', headline)[0][0]
-
-		insert_cmd = f'INSERT INTO NewsSourceHeadline (NewsSourceId, HeadlineId) \
-					   VALUES ({idNews},{idHeadline});'
+		insert_cmd = f'INSERT INTO Headline (Content, NewsSourceId) VALUES ("{headline}", {idNews});'
 		self.db_interactor.change_one_sql_command(insert_cmd)
 
 	def get_rows(self, tble_name, column_name, item_value):
@@ -58,9 +53,7 @@ class DataManager:
 			return [row[1] for row in self.get_all_ids_headlines()]
 
 		fetch_cmd = f'SELECT Headline.Content \
-					FROM ((Headline \
-					INNER JOIN NewsSourceHeadline \
-					ON Headline.Id = NewsSourceHeadline.HeadlineId) \
+					FROM (Headline \
 					INNER JOIN NewsSource \
 					ON NewsSourceHeadline.NewsSourceId = NewsSource.Id) \
 					WHERE NewsSource.Name = "{news_source}"'
