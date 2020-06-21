@@ -1,7 +1,7 @@
 from core.scrape.cleaner import Cleaner
 from core.database.data_manager import DataManager
 
-class DataRetriever:
+class DataRetriever:    
     @staticmethod
     def gather_news_source_data(data_manager, news_outlet):
         cleaner = Cleaner(news_outlet)
