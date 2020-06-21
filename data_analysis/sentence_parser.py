@@ -2,6 +2,9 @@ import nltk
 import spacy
 import re
 
+from data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS
+from data_analysis.sentence_cleaner import SentenceCleaner
+
 class SentenceParser():
 	"""docstring for SentenceParser"""
 	
@@ -10,7 +13,7 @@ class SentenceParser():
 		Initialized RegexpParser
 		"""
 		self.spacy_model = spacy.load("en_core_web_sm")
-		self.word_set = set(nltk.corpus.words.words())
+		self.sentence_cleaner = SentenceCleaner()
 
 	def part_of_speech_tag(self, sentence):
 		"""
@@ -44,51 +47,16 @@ class SentenceParser():
 		"""
 		Returns whether the label is in restricted entity
 		"""
-		restricted = {"DATE", "TIME", "ORDINAL", "CARDINAL"}
+		restricted = {"DATE", "TIME", "ORDINAL", "CARDINAL", "PERCENT", 
+							"MONEY", "QUANTITY"}
 		return label in restricted
 
-	def is_common_word(self, word):
+	def has_number_tag(self, label):
 		"""
-		Returns whether the word is in nltk word set
+		Returns whether the label refers to a quantity
 		"""
-		return word in self.word_set or word.lower() in self.word_set
-
-	def remove_punct(self, text):
-		"""
-		Returns the word without quotation or other punctuation
-		"""
-		if len(text) >=2 and text[-2:]=="'s":
-			text = text[:-2]
-		pattern = "([^\w\s-])"
-		return re.sub(pattern, "", text)
-
-	def is_proper_noun(self, word):
-		"""
-		Returns whether the word is a proper noun
-		"""
-		return not self.is_common_word(word) and not word.islower()
-
-	def helper_not_caught(self, word, words_in_ents):
-		"""
-		Returns whether the words should be added to ents
-		"""
-		return len(word)>0 and word not in words_in_ents and \
-				self.is_proper_noun(word)
-
-	def retrieve_entities_not_caught(self, words_in_ents, sentence):
-		"""
-		Returns a list of entities that should have been added but 
-		was not identified by spacy
-		"""
-		ents = []
-		tokenized = nltk.word_tokenize(sentence)
-
-		for word in tokenized:
-			cleaned_word = self.remove_punct(word)
-			if self.helper_not_caught(cleaned_word, words_in_ents):
-				ents.append((word, "UNLABELED"))
-
-		return ents
+		quantity_set = {"PERCENT", "MONEY"}
+		return label in quantity_set
 
 	def retrieve_entities(self, sentence):
 		"""
@@ -101,18 +69,18 @@ class SentenceParser():
 		for ent in self.spacy_model(sentence).ents:
 			text, label = ent.text, ent.label_
 			if not self.in_restricted_entity(label):
-				print(text)
-				cleaned_text = self.remove_punct(text)
-				ents.append((cleaned_text, label))
+				cleaned_text = self.sentence_cleaner.clean_entity_text(text)
+				if len(cleaned_text)>0:
+					ents.append((cleaned_text, label))
 				words_in_ents = words_in_ents | set(cleaned_text.split(" "))
 
-		print(ents)
-		return ents + self.retrieve_entities_not_caught(words_in_ents, sentence)
+		#print("Parser", ents)
+		ents1 = set(ents)
+		ents2 = set(self.sentence_cleaner.retrieve_entities_not_caught(words_in_ents, sentence))
+		return list(ents1 | ents2)
 
 	def retrieve_keywords(self, sentence):
 		"""
 		Returns the list of entity text
 		"""
 		return [ent[0] for ent in self.retrieve_entities(sentence)]
-
-
