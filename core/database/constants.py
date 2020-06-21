@@ -8,20 +8,30 @@ CREATE_TABLES_CMDS = [
     PRIMARY KEY (Id)) \
     ENGINE=INNODB;',
     'CREATE TABLE Headline \
-    (Id INT AUTO_INCREMENT, \
+    (Id INT NOT NULL AUTO_INCREMENT, \
     Content VARCHAR(255) NOT NULL, \
     Datetime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, \
-    PRIMARY KEY (Id)) \
-    ENGINE=INNODB;',
-    'CREATE TABLE NewsSourceHeadline \
-    (Id INT AUTO_INCREMENT, \
+    Vader REAL, \
+    LiuHu REAL, \
     NewsSourceId INT NOT NULL, \
-    HeadlineId INT NOT NULL, \
     PRIMARY KEY (Id), \
     FOREIGN KEY (NewsSourceId) \
-        REFERENCES NewsSource(Id), \
+        REFERENCES NewsSource(Id)) \
+    ENGINE=INNODB;',
+    'CREATE TABLE Keyword \
+    (Id INT NOT NULL AUTO_INCREMENT, \
+    Content VARCHAR(255) NOT NULL, \
+    PRIMARY KEY (Id)) \
+    ENGINE=INNODB;', 
+    'CREATE TABLE HeadlineKeyword \
+    (Id INT NOT NULL AUTO_INCREMENT, \
+    HeadlineId INT NOT NULL, \
+    KeywordId INT NOT NULL, \
+    PRIMARY KEY (Id), \
     FOREIGN KEY (HeadlineId) \
-        REFERENCES Headline(Id)) \
+        REFERENCES Headline(Id), \
+    FOREIGN KEY (KeywordId) \
+        REFERENCES Keyword(Id)) \
     ENGINE=INNODB;'
 ]
 
