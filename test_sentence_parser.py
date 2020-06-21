@@ -305,7 +305,13 @@ class TestEntityRetrieve(TestSentenceParser):
 		sentence = "Customer pranks rude driver in McDonald's drive-thru: 'Plot twist'"
 		expected = {"McDonald"}
 		res = set(self.parser.retrieve_keywords(sentence))
-		self.assertEqual(res, expected)		
+		self.assertEqual(res, expected)
+
+	def test_case_32(self):
+		sentence = "BLM protests, supreme court decision, graduation: This Week in Pictures"
+		expected = {"BLM"}
+		res = set(self.parser.retrieve_keywords(sentence))
+		self.assertEqual(res, expected)
 
 if __name__ == '__main__':
 	unittest.main(verbosity=3, exit =True)

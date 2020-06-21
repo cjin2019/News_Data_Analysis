@@ -4,4 +4,7 @@ PROPER_NOUNS = {"Trump", "WHO", "coronavirus", "Twitter", "Stern"}
 
 COMMON_NOUNS = set(nc.words.words()) | \
 			   set(nc.stopwords.words('english')) | \
-				{"timeline", "mom", "slideshow", "Dr"}
+				{"timeline", "mom", "slideshow", "Dr", "tv",
+				 "ac", "diy"}
+
+COMMON_ENTITY_NOUNS = {"plot", "picture"}

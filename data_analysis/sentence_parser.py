@@ -74,7 +74,7 @@ class SentenceParser():
 					ents.append((cleaned_text, label))
 				words_in_ents = words_in_ents | set(cleaned_text.split(" "))
 
-		#print("Parser", ents)
+		print("Parser", ents)
 		ents1 = set(ents)
 		ents2 = set(self.sentence_cleaner.retrieve_entities_not_caught(words_in_ents, sentence))
 		return list(ents1 | ents2)
