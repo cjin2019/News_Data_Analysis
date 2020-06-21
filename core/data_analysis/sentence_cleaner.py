@@ -1,7 +1,7 @@
 import nltk
 import re
 
-from data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS
+from core.data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS, COMMON_ENTITY_NOUNS
 
 class SentenceCleaner(object):
 	"""docstring for SentenceCleaner"""
@@ -23,6 +23,20 @@ class SentenceCleaner(object):
 			return True
 		return False
 
+	def is_common_entity_text(self, word):
+		"""
+		Helper for clean entity word
+		1. Determine if word is under common_entity_nouns
+		"""
+
+		if word in COMMON_ENTITY_NOUNS:
+			return True
+		if word.lower() in COMMON_ENTITY_NOUNS:
+			return True
+		if self.get_base_form(word) in COMMON_ENTITY_NOUNS:
+			return True
+		return False
+
 	def clean_entity_text(self, text):
 		"""
 		Cleans the entity by removing unnecessary junk
@@ -31,7 +45,7 @@ class SentenceCleaner(object):
 		"""
 		text1 = self.remove_punct(text)
 		text2 = self.remove_lower_words(text1)
-		return text2 
+		return text2 if not self.is_common_entity_text(text2) else ""
 
 	def remove_punct(self, text):
 		"""
@@ -70,7 +84,7 @@ class SentenceCleaner(object):
 				return morphed+"e"
 			elif lower[idx + len(morphed)-1:]=="ied":
 				return morphed[:-1]+"y"
-
+				
 		return word if morphed is None else morphed
 
 	def is_proper_noun(self, word):
