@@ -1,7 +1,7 @@
 import nltk
 import re
 
-from data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS, COMMON_ENTITY_NOUNS
+from core.data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS, COMMON_ENTITY_NOUNS
 
 class SentenceCleaner(object):
 	"""docstring for SentenceCleaner"""

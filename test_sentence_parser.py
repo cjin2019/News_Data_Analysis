@@ -1,5 +1,5 @@
 import unittest
-from data_analysis.sentence_parser import SentenceParser
+from core.data_analysis.sentence_parser import SentenceParser
 from test_cases.test_sentence_parser_cases.input import SENTENCES
 from test_cases.test_sentence_parser_cases.output import OUTPUTS
 

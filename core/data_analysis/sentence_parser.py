@@ -2,8 +2,8 @@ import nltk
 import spacy
 import re
 
-from data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS
-from data_analysis.sentence_cleaner import SentenceCleaner
+from core.data_analysis.word_sets import PROPER_NOUNS, COMMON_NOUNS
+from core.data_analysis.sentence_cleaner import SentenceCleaner
 
 class SentenceParser():
 	"""docstring for SentenceParser"""
