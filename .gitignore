@@ -2,3 +2,4 @@ venv
 **/output
 **/__pycache__
 **/config.py
+**/populate_database.bash
