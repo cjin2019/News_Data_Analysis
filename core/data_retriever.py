@@ -40,4 +40,4 @@ class DataRetriever:
         sentence_parser = SentenceParser()
         keywords = sentence_parser.retrieve_keywords(title)
         for keyword in keywords:
-            data_manager.insert_keyword(keyword)
+            data_manager.insert_keyword(title, keyword)

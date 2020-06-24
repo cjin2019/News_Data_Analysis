@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python populate_database.py
+python3 populate_database.py

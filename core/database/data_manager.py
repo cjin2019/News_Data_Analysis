@@ -22,7 +22,7 @@ class DataManager:
 		Insert Vader and Liu-Hu values for a given headline
 		"""
 		idHeadline = self.get_rows('Headline', 'Content', headline)[0][0]
-		insert_cmd = f'UPDATE Customers \
+		insert_cmd = f'UPDATE Headline \
 			SET Vader = {vader}, LiuHu = {liu_hu} \
 			WHERE Id = {idHeadline};'
 		self.db_interactor.change_one_sql_command(insert_cmd)
