@@ -42,6 +42,7 @@ class SentenceCleaner(object):
 		Cleans the entity by removing unnecessary junk
 		1. Removes punctuation and 's
 		2. Removes lower case words tailing upper case words
+		3. Removes '-' string
 		"""
 		text1 = self.remove_punct(text)
 		text2 = self.remove_lower_words(text1)

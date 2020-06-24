@@ -3,3 +3,4 @@ venv
 **/__pycache__
 **/config.py
 **/populate_database.bash
+**/populate_data_output.txt
