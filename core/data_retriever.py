@@ -21,6 +21,7 @@ class DataRetriever:
         titles = cleaner.get_titles()
         for title in titles:
             print(f'adding {str(title)}')
+
             data_manager.insert_headline(str(title), news_outlet)
 
             print(f'adding {str(title)}\'s sentiment values')
@@ -34,6 +35,7 @@ class DataRetriever:
         vader = sentiment_analyzer.vader_polarity(title)
         liu_hu = sentiment_analyzer.liu_and_hu_polarity(title)
 
+        print("Vader:", vader, "LiuHu:", liu_hu)
         data_manager.insert_sentiment_values(title, vader, liu_hu)
     
     def _add_key_words(self, data_manager, title):

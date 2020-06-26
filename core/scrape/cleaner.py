@@ -53,6 +53,7 @@ class Cleaner:
             if clean_title in clean_titles:
                 continue
             if clean_title:
+                clean_title = clean_title.replace('\"', '\'')
                 clean_titles.append(clean_title)
         
         return clean_titles
