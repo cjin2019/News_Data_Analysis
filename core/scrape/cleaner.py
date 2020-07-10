@@ -1,5 +1,5 @@
 from core.scrape.html_parser import HTMLParser
-from core.scrape.scrape_constants import NEWS_URLS, HEADLINE_MARKERS, REMOVE_STRS
+from core.scrape.scrape_constants import NEWS_URLS, HEADLINE_MARKERS, REMOVE_STRS, REPLACE_STRS
 
 class Cleaner:
     def __init__(self, news_outlet):
@@ -35,9 +35,19 @@ class Cleaner:
         clean_title = clean_title.encode('utf-8', 'ignore').decode('utf-8')
         for remove_str in REMOVE_STRS:
             clean_title = clean_title.replace(remove_str, '')
+        clean_title = self.replace_strs(clean_title)
         if len(clean_title) == 0:
             return
         
+        return clean_title
+
+    def replace_strs(self, title):
+        """
+        Replace the old char with the new char
+        """
+        clean_title = title
+        for old_char in REPLACE_STRS:
+            clean_title = clean_title.replace(old_char, REPLACE_STRS[old_char])
         return clean_title
 
     def clean_titles(self, titles):
@@ -53,7 +63,6 @@ class Cleaner:
             if clean_title in clean_titles:
                 continue
             if clean_title:
-                clean_title = clean_title.replace('\"', '\'')
                 clean_titles.append(clean_title)
         
         return clean_titles

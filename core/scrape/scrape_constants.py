@@ -53,3 +53,8 @@ REMOVE_STRS = [
     '\\u003c/strong>',
 	'Top Photos of the Day'
 ]
+
+REPLACE_STRS = {
+    '\"': '\'',
+    '—' : '-'
+}
